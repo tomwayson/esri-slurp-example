@@ -1,0 +1,15 @@
+/*@import '../../dojo/resources/dojo.css';
+@import '../../dijit/themes/claro/claro.css';*/
+@import '../../esri/css/esri.css';
+/*@import '../../dgrid/css/dgrid.css';*/
+html, body, #map {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #FFF;
+  overflow: hidden;
+  font-family: "Trebuchet MS";
+}
