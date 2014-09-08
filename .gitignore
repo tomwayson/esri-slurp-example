@@ -4,4 +4,7 @@ src/dojo
 src/dojox
 src/esri
 src/util
-
+src/dgrid/
+src/put-selector/
+src/xstyle/
+dist
