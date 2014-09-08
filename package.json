@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "description": "Example of how to do a Dojo build with Esri JSAPI source code downloaded using grunt-esri-slurp",
   "main": "gruntfile.js",
-  "dependencies": {
-    "grunt-esri-slurp": "^0.6.0"
-  },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-esri-slurp": "^0.6.0"
+    "grunt-esri-slurp": "^0.6.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

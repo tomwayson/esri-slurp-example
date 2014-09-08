@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     esri_slurp: {
       dev: {
         options: {
-          version: '3.9',
+          version: '3.10',
           packageLocation: 'src/esri',
           beautify: true
         }
