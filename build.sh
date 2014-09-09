@@ -38,16 +38,14 @@ echo " Done"
 # node_modules/.bin/stylus -c "$SRCDIR/app/resources/app.styl"
 "$TOOLSDIR/build.sh" --profile "$PROFILE" --releaseDir "$DISTDIR" $@
 
-"copy.sh"
+cd "$BASEDIR"
 
-# cd "$BASEDIR"
-
-# # Copy & minify index.html to dist
-# cat "$SRCDIR/index.html" | \
-# perl -pe 's/\/\/.*$//gm;       # Strip JS comments' |
-# perl -pe 's/\n/ /g;            # Replace newlines with whitespace' |
-# perl -pe 's/<\!--.*?-->//g;    # Strip HTML comments' |
-# perl -pe 's/isDebug: *true,//; # Remove isDebug' |
-# perl -pe 's/\s+/ /g;           # Collapse whitespace' > "$DISTDIR/index.html"
+# Copy & minify index.html to dist
+cat "$SRCDIR/index.html" | \
+perl -pe 's/\/\/.*$//gm;       # Strip JS comments' |
+perl -pe 's/\n/ /g;            # Replace newlines with whitespace' |
+perl -pe 's/<\!--.*?-->//g;    # Strip HTML comments' |
+perl -pe 's/isDebug: *true,//; # Remove isDebug' |
+perl -pe 's/\s+/ /g;           # Collapse whitespace' > "$DISTDIR/index.html"
 
 echo "Build complete"
