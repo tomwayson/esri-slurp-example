@@ -70,7 +70,10 @@ var profile = {
       boot: true,
       customBase: true,
       include: [
+        // include the app
         'app/main',
+        // dpendencies of esri/map that will be requested if not included
+        // probably in a nested require block or something the build script can't resolve
         'dojox/gfx/path',
         'dojox/gfx/svg',
         'dojox/gfx/shape'
