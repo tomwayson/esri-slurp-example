@@ -1,12 +1,4 @@
 /**
- * This is the default application build profile used by the boilerplate. While it looks similar, this build profile
- * is different from the package build profile at `app/package.js` in the following ways:
- *
- * 1. you can have multiple application build profiles (e.g. one for desktop, one for tablet, etc.), but only one
- *    package build profile;
- * 2. the package build profile only configures the `resourceTags` for the files in the package, whereas the
- *    application build profile tells the build system how to build the entire application.
- *
  * Look to `util/build/buildControlDefault.js` for more information on available options and their default values.
  */
 
@@ -76,15 +68,21 @@ var profile = {
       // a bunch of stuff we do not want or need. We want the initial script load to be as small and quick to
       // load as possible, so we configure it as a custom, bootable base.
       boot: true,
-      customBase: true
-    },
+      customBase: true,
+      include: [
+        'app/main',
+        'dojox/gfx/path',
+        'dojox/gfx/svg',
+        'dojox/gfx/shape'
+      ]
+    }//,
 
-    // In this demo application, we load `app/main` on the client-side, so here we build a separate layer containing
-    // that code. (Practically speaking, you would probably just want to roll everything into the `dojo/dojo` layer,
+    // In this demo application, we load `app/main` on the client-side, so here we could build a separate layer containing
+    // that code. (Practically speaking, you probably just want to roll everything into the `dojo/dojo` layer,
     // but this helps provide a basic illustration of how multi-layer builds work.) Note that when you create a new
     // layer, the module referenced by the layer is always included in the layer (in this case, `app/main`), so it
     // does not need to be explicitly defined in the `include` array.
-    'app/main': {}
+    // 'app/main': {}
   },
 
   // Providing hints to the build system allows code to be conditionally removed on a more granular level than simple
