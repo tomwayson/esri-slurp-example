@@ -1,16 +1,22 @@
 /*global module:false*/
 module.exports = function (grunt) {
   grunt.initConfig({
+    // tell slurp which version of the JSAPI to get
+    // and where to put it
     esri_slurp: {
+      options: {
+        version: '3.10'
+      },
       dev: {
         options: {
-          version: '3.10',
-          packageLocation: 'src/esri',
           beautify: true
-        }
+        },
+        dest: 'src/esri'
       }
     },
+    // clean the output directory before each build
     clean: ['dist'],
+    // dojo build configuration, mainly taken from dojo boilerplate
     dojo: {
       dist: {
         options: {
@@ -35,6 +41,8 @@ module.exports = function (grunt) {
         basePath: './src'
       }
     },
+    // this copies over index.html and replaces
+    // the perl regexp section of build.sh in the dojo boilerplate
     'string-replace': {
       index: {
         src: './src/index.html',
