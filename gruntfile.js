@@ -5,17 +5,25 @@ module.exports = function (grunt) {
     // and where to put it
     esri_slurp: {
       options: {
-        version: '3.10'
+        version: '3.11'
       },
       dev: {
         options: {
-          beautify: true
+          // NOTE: issue w/ beautify on Win:
+          // https://github.com/steveoh/grunt-esri-slurp/issues/31
+          beautify: false
         },
         dest: 'src/esri'
       }
     },
-    // clean the output directory before each build
-    clean: ['dist'],
+    clean: {
+      // clean the output directory before each build
+      dist: ['dist'],
+      // remove dojo source code (i.e. before bower install)
+      dojo: ['src/dgrid', 'src/dijit', 'src/dojo', 'src/dojox', 'src/put-selector', 'src/util', 'src/xstyle'],
+      // remove esri source code (before slurp)
+      esri: ['src/esri']
+    },
     // dojo build configuration, mainly taken from dojo boilerplate
     dojo: {
       dist: {
@@ -85,6 +93,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-dojo');
   grunt.loadNpmTasks('grunt-string-replace');
 
-  grunt.registerTask('slurp', ['esri_slurp:dev']);
-  grunt.registerTask('build', ['clean', 'dojo', 'string-replace']);
+  grunt.registerTask('slurp', ['clean:esri', 'esri_slurp:dev']);
+  grunt.registerTask('build', ['clean:dist', 'dojo', 'string-replace']);
 };

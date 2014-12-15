@@ -1,6 +1,6 @@
 {
   "name": "esri-slurp-example",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Example of how to do a Dojo build with Esri JSAPI source code downloaded using grunt-esri-slurp",
   "main": "gruntfile.js",
   "repository": {
@@ -11,7 +11,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-dojo": "^0.3.0",
-    "grunt-esri-slurp": "^1.0.3",
+    "grunt-esri-slurp": "^1.2.0",
     "grunt-string-replace": "^0.2.7"
   },
   "scripts": {
