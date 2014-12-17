@@ -46,6 +46,10 @@ var profile = {
     'xstyle'
   ],
 
+  // Build source map files to aid in debugging.
+  // This defaults to true.
+  // useSourceMaps: false,
+
   // Strips all calls to console functions within the code. You can also set this to "warn" to strip everything
   // but console.error, and any other truthy value to strip everything but console.warn and console.error.
   // This defaults to "normal" (strip all but warn and error) if not provided.
