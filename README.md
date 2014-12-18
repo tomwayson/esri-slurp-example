@@ -6,28 +6,41 @@ The purpose of this repo is to show how to do a Dojo build with Esri JSAPI sourc
 You must have [Node.js](http://nodejs.org/) installed as well as the [Grunt CLI](http://gruntjs.com/getting-started).
 
 Install Grunt tasks with npm:
-```
+```bash
 npm install
 ```
 
 Download Dojo and other dependencies with bower:
-```
+```bash
 bower install
 ```
 
 Download the AMD build of the ArcGIS API for JavaScript with [grunt-esri-slurp](https://www.npmjs.org/package/grunt-esri-slurp):
-```
+```bash
 grunt slurp
 ```
 
 Load the unbuilt app in a browser to verify that it works and that all dependencies are in place.
 
 Build the app:
-```
+```bash
 grunt build
 ```
 
 Load the built app in a browser to verify that it works. Inspect network traffic to verify that the build version of the app requests fewer and smaller scripts.
+
+By default the Dojo build outputs uncompressed versions of the source files as well as source maps to aid in debugging. If you don't need the source maps or uncompressed files (e.g. if you debug using the unbuilt source), then you can save time and space while running the build by uncommenting the following line in app.profile.js:
+```js
+// useSourceMaps: false
+```
+
+You can further reduce the size of the output directory by 50% or more by running the following grunt commands *after* the build:
+```bash
+grunt clean:uncompressed
+grunt clean:stripped
+```
+
+On the other hand, if you want to use source maps for debugging,
 
 ##Comparing Build Output
 In order to determine if our build improves the user experience, we need to verify that the built page makes fewer script requests and that the size of the scripts requested is smaller than the unbuilt version of the page. We also need to verify the same as compared to similar pages that reference the [standard and compact CDN hosted builds of the API](https://developers.arcgis.com/javascript/jshelp/inside_compactbuild.html). The "app" in this example is based on the [Create a map sample page](https://developers.arcgis.com/javascript/jssamples/map_simple.html), and for convenience, this repo includes a copy of that page as well as a copy that uses the compact build (under the `samples` folder).

@@ -19,10 +19,14 @@ module.exports = function (grunt) {
     clean: {
       // clean the output directory before each build
       dist: ['dist'],
-      // remove dojo source code (i.e. before bower install)
+      // remove dojo source code (i.e. before fresh bower install)
       dojo: ['src/dgrid', 'src/dijit', 'src/dojo', 'src/dojox', 'src/put-selector', 'src/util', 'src/xstyle'],
       // remove esri source code (before slurp)
-      esri: ['src/esri']
+      esri: ['src/esri'],
+      // remove uncompressed files from dist
+      uncompressed: ['dist/**/*.uncompressed.js'],
+      // remove console stripped files from dist
+      stripped: ['dist/**/*.consoleStripped.js']
     },
     // dojo build configuration, mainly taken from dojo boilerplate
     dojo: {
