@@ -5,13 +5,11 @@ module.exports = function (grunt) {
     // and where to put it
     esri_slurp: {
       options: {
-        version: '3.11'
+        version: '3.12'
       },
       dev: {
         options: {
-          // NOTE: issue w/ beautify on Win:
-          // https://github.com/steveoh/grunt-esri-slurp/issues/31
-          beautify: false
+          beautify: true
         },
         dest: 'src/esri'
       }
@@ -89,11 +87,31 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    // host files in a local web server
+    connect: {
+      options: {
+        port: 9000,
+        keepalive: true
+      },
+      // serve unbuilt application and samples
+      src: {
+        options: {
+          base: ['src', 'samples']
+        }
+      },
+      // serve unbuilt application and samples
+      dist: {
+        options: {
+          base: ['dist', 'samples']
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-esri-slurp');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-dojo');
   grunt.loadNpmTasks('grunt-string-replace');
 
