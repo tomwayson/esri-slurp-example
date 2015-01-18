@@ -80,7 +80,8 @@ var profile = {
         // probably in a nested require block or something the build script can't resolve
         'dojox/gfx/path',
         'dojox/gfx/svg',
-        'dojox/gfx/shape'
+        'dojox/gfx/shape',
+        'esri/dijit/Attribution'
       ]
     }//,
 
