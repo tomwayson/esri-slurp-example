@@ -1,6 +1,6 @@
 {
   "name": "esri-slurp-example",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "dijit": "1.10.0",
     "dojo": "1.10.0",

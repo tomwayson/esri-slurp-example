@@ -82,7 +82,8 @@ var profile = {
         'dojox/gfx/svg',
         'dojox/gfx/shape',
         'esri/dijit/Attribution'
-      ]
+      ],
+      includeLocales: ['en-us']
     }//,
 
     // In this demo application, we load `app/main` on the client-side, so here we could build a separate layer containing
