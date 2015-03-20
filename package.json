@@ -24,5 +24,11 @@
     "build"
   ],
   "author": "Tom Wayson <tom@tomwayson.com>",
+  "contributors": [
+    {
+      "name": "Arnaud Ferrand",
+      "homepage": "https://github.com/tsamaya"
+    }
+  ],
   "license": "Apache"
 }
