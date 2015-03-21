@@ -81,7 +81,12 @@ var profile = {
         'dojox/gfx/path',
         'dojox/gfx/svg',
         'dojox/gfx/shape',
-        'esri/dijit/Attribution'
+        'esri/dijit/Attribution',
+
+        // be sure to include the layer types used in your web map
+        // otherwise they will be requested asyncronously
+        'esri/map', 'esri/dijit/Search', 'esri/layers/FeatureLayer', 'esri/InfoTemplate', 'esri/SpatialReference', 'esri/geometry/Extent'
+
       ],
       includeLocales: ['en-us']
     }//,
