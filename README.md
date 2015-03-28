@@ -39,9 +39,15 @@ Then browse to `http://localhost:9000/` and verify that it
  works. You can inspect the network traffic to verify that the build version of the app requests fewer and smaller scripts (see below).
 
 ##Comparing the Built App
-In order to determine if our build improves the user experience, we need to verify that the built page makes fewer script requests and that the size of the scripts requested is smaller than the unbuilt version of the page. We also need to verify the same as compared to similar pages that reference the [standard and compact CDN hosted builds of the API](https://developers.arcgis.com/javascript/jshelp/inside_compactbuild.html). The "app" in this example is based on the [Create a map sample page](https://developers.arcgis.com/javascript/jssamples/map_simple.html), and for convenience, this repo includes a copy of that page as well as a copy that uses the compact build (under the `samples` folder).
+In order to determine if our build improves the user experience, we need to verify that the built page makes fewer script requests and that the size of the scripts requested is smaller when compared to similar pages that reference the [standard and compact CDN hosted builds of the API](https://developers.arcgis.com/javascript/jshelp/inside_compactbuild.html). The "app" in this example is based on the [Search multiple sources sample page](https://developers.arcgis.com/javascript/jssamples/search_multiplesources.html), and for convenience, this repo includes a copy of that page as well as a copy that uses the compact build (under the `samples` folder). I've compiled a comparison of the file requests and sizes between the different builds below.
 
-I've compiled a comparison of the file requests and sizes between the different builds in [a Google Spreadsheet](http://bit.ly/1p733Q7). The results show that there's a significant improvement over an unbuilt app (no surprise), and marginal improvements over the CDN builds. However, when creating builds for more complex, real-world applications with many modules, you will see significant improvements over the CDN builds in most cases.
+Page | JS Requests | JS KB (gzipped) | JS KB (uncompressed)
+------ | ----------------- | ------------- | --------------- | ---------------
+dist/index.html (built app) | 1 | 304 | 792
+samples/search_multiplesources_compact.html | 23 | 348 | 850
+samples/search_multiplesources.html | 7 | 431 | 1091
+
+However, **your mileage may vary and there are many factors to consider when deciding whether or not it is worth while to do a Dojo build.** If your code is small and/or does not reference a lot of modules that are not already included in one of the CDN builds, a local build may not help that much. Conversely, when creating applications with many modules, you should see significant improvements over the CDN builds in most cases.
 
 ## Reducing the Size (on Disk) of Build Output
 By default the Dojo build outputs uncompressed versions of the source files as well as source maps to aid in debugging. If you don't need the source maps or uncompressed files (e.g. if you debug using the unbuilt source), then you can save time and space while running the build by uncommenting the following line in app.profile.js:
