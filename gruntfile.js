@@ -26,6 +26,19 @@ module.exports = function (grunt) {
       // remove console stripped files from dist
       stripped: ['dist/**/*.consoleStripped.js']
     },
+	
+	
+	execute: {
+        dojoBuild: {
+            // execute javascript files in a node child_process 
+            src: ['src/dojo/dojo.js'], // Path to dojo.js file in dojo source']
+			cwd: './', // Directory to execute build within
+			options: {
+				args: [ 'load=build', '--profile', 'profiles\\app.profile.js', 'releaseDir=../dist']
+				} 
+        }
+	},
+	
     // dojo build configuration, mainly taken from dojo boilerplate
     dojo: {
       dist: {
@@ -34,7 +47,7 @@ module.exports = function (grunt) {
         }
       },
       options: {
-        dojo: 'src/dojo/dojo.js', // Path to dojo.js file in dojo source
+        dojo: 'src/arcgis-js-api/dojo/dojo.js', // Path to dojo.js file in dojo source
         load: 'build', // Optional: Utility to bootstrap (Default: 'build')
         // profiles: [], // Optional: Array of Profiles for build
         // appConfigFile: '', // Optional: Config file for dojox/app
@@ -51,6 +64,7 @@ module.exports = function (grunt) {
         basePath: './src'
       }
     },
+
     // this copies over index.html and replaces
     // the perl regexp section of build.sh in the dojo boilerplate
     'string-replace': {
@@ -64,30 +78,38 @@ module.exports = function (grunt) {
               pattern: /isDebug: *true,/,
               replacement: ''
             },
-            // strip js comments
-            {
-              pattern: /\s+\/\/.*$/gm,
-              replacement: ''
-            },
-            // replace newlines w/ whitespace
-            {
+           {
               pattern: /\n/g,
               replacement: ' '
-            },
-            // strip html comments
-            {
-              pattern: /<!--[\s\S]*?-->/g,
-              replacement: ''
-            },
-            // collapse whitespace
+           },
+		   // collapse whitespace
             {
               pattern: /\s+/g,
               replacement: ' '
             }
-          ]
+            // leave html comments as these contain conditional statements
+		 ]
         }
-      }
+      },
+	  init: {
+		src: './src/init.js',
+        dest: './dist/init.js',
+	   },
+	  simpleLoader: {
+		src: './src/simpleLoader.js',
+        dest: './dist/simpleLoader.js',
+	   },
+	  env: {
+		src: './src/env.js',
+        dest: './dist/env.js',
+	   },
+	  config: {
+		src: './src/config.json',
+        dest: './dist/config.json',
+	  },
+
     },
+	
     // host files in a local web server
     connect: {
       options: {
@@ -114,7 +136,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-dojo');
   grunt.loadNpmTasks('grunt-string-replace');
+    grunt.loadNpmTasks('grunt-execute');
+
 
   grunt.registerTask('slurp', ['clean:esri', 'esri_slurp:dev']);
-  grunt.registerTask('build', ['clean:dist', 'dojo', 'string-replace']);
+  grunt.registerTask('build', ['clean:dist', 'execute:dojoBuild', 'string-replace']);
+  grunt.registerTask('buildroot', ['string-replace']);
+
 };
