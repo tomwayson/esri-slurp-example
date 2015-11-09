@@ -37,6 +37,7 @@ var profile = {
   packages: [
     // Using a string as a package is shorthand for `{ name: 'app', location: 'app' }`
     'app',
+    'dgauges',
     'dgrid',
     'dijit',
     'dojo',
@@ -45,6 +46,15 @@ var profile = {
     'put-selector',
     'xstyle'
   ],
+
+  // map git submodules used by dojox since
+  // b/c bower uses a flat folder structure
+  // see https://github.com/steveoh/grunt-esri-slurp/issues/38
+  map: {
+    '*': {
+      'dojox/dgauges': 'dgauges'
+    }
+  },
 
   // Build source map files to aid in debugging.
   // This defaults to true.

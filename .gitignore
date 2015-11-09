@@ -1,10 +1,12 @@
 node_modules
+src/dgauges/
+src/dgrid/
 src/dijit
 src/dojo
 src/dojox
+src/dstore/
 src/esri
 src/util
-src/dgrid/
 src/put-selector/
 src/xstyle/
 dist

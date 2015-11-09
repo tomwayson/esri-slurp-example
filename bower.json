@@ -2,12 +2,14 @@
   "name": "esri-slurp-example",
   "version": "0.1.2",
   "dependencies": {
+    "dgauges": "https://github.com/dmandrioli/dgauges.git#383a47f2216be432d866d1add0a95ce40f62da52",
+    "dgrid": "0.3.17",
     "dijit": "1.10.4",
     "dojo": "1.10.4",
     "dojox": "1.10.4",
-    "util": "dojo-util#1.10.4",
-    "dgrid": "0.3.17",
+    "dstore": "1.1.0",
     "put-selector": "0.3.6",
+    "util": "dojo-util#1.10.4",
     "xstyle": "0.1.3"
   },
   "devDependencies": {}
