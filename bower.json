@@ -1,6 +1,6 @@
 {
   "name": "esri-slurp-example",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "dependencies": {
     "dgauges": "https://github.com/dmandrioli/dgauges.git#383a47f2216be432d866d1add0a95ce40f62da52",
     "dgrid": "0.3.17",
